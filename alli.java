@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mayariBot;
+package alliBot;
 
 import ai.abstraction.pathfinding.AStarPathFinding;
 import ai.core.AI;
