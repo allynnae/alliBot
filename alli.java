@@ -1,8 +1,20 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This is a modified version of Mayari. Below is a summary of the changes made.
+ *
+ * 1) Updated damage tracking:
+ *    from: _newDmgs.get(e) + a.getMaxHitPoints()
+ *    to:   _newDmgs.get(e) + a.getMaxDamage()
+ *
+ * 2) Updated action legality check:
+ *    from: if (_gs.isUnitActionAllowed(b, ua)) { _pa.addUnitAction(a, ua); }
+ *    to:   if (_gs.isUnitActionAllowed(a, ua)) { _pa.addUnitAction(a, ua); }
+ *
+ * 3) Added base-under-threat behavior:
+ *    - workers can defend sooner
+ *    - fewer harvesters under pressure
+ *    - barracks prioritize ranged while defending
  */
+
 package alliBot;
 
 import ai.abstraction.pathfinding.AStarPathFinding;
