@@ -55,3 +55,5 @@ LLM Usage:
 - Codex was used in certain aspects. Prompts include the following:
     - "This is originally the Mayari bot for the MicroRTS competition. Do you notice any bugs/flaws?"
     - "If I wanted to improve performance against the Worker Rush bot specifically, what method would you suggest?"
+
+Report Link: [Report](https://wandb.ai/am893120/microrts-bot-eval/reports/MicroRTS-AlliBot-Performance--VmlldzoxNTk3NTAwNA)
