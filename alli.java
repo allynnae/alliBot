@@ -614,7 +614,22 @@ public class alli extends AIWithComputationBudget {
         }
     }
     
+    boolean baseUnderThreat() {
+        if (_bases.isEmpty())
+            return false;
+        Unit base = _bases.get(0);
+        for (Unit enemy : _enemies) {
+            if (!enemy.getType().canAttack && enemy.getType() != _utt.getUnitType("Worker"))
+                continue;
+            if (distance(base, enemy) <= 6)
+                return true;
+        }
+        return false;
+    }
+    
     boolean shouldWorkersAttack() {
+        if (baseUnderThreat())
+            return true;
         if (_pgs.getWidth() <= 12)
             return true;
         if (enemyHeaviesWeak() && _enemyArchers.isEmpty() &&
@@ -648,6 +663,9 @@ public class alli extends AIWithComputationBudget {
     }
     
     int harvesterPerBase() {
+        if (baseUnderThreat())
+            return 1;
+        
         int totalWorkers = _workers.size() + _enemyWorkers.size();
         int totalCombat = _allyCombat.size() + _enemiesCombat.size();
         int totalResource = _resources.size();
@@ -834,6 +852,10 @@ public class alli extends AIWithComputationBudget {
         for (Unit barrack : _barracks) {
             if (busy(barrack))
                 continue;
+            if (baseUnderThreat()) {
+                if (produceCombat(barrack, _utt.getUnitType("Ranged")))
+                    continue;
+            }
             
             if(isSeperated(barrack, _enemies)) {
                 if(produceCombat(barrack, _utt.getUnitType("Ranged")))
