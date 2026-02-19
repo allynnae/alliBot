@@ -410,7 +410,7 @@ public class alli extends AIWithComputationBudget {
         _pa.addUnitAction(a, ua);
         if (!_newDmgs.containsKey(e))
             _newDmgs.put(e, 0);
-        int newDmg = _newDmgs.get(e) + a.getMaxHitPoints();
+        int newDmg = _newDmgs.get(e) + a.getMaxDamage();
         _newDmgs.replace(e, newDmg);
         return true;
     }
@@ -467,7 +467,7 @@ public class alli extends AIWithComputationBudget {
             if (!posFree(newPos.getX(), newPos.getY(), NoDirection)) //a hack
                 continue;
             UnitAction ua = new UnitAction(UnitAction.TYPE_MOVE, dir);
-            if (_gs.isUnitActionAllowed(b, ua)) {
+            if (_gs.isUnitActionAllowed(a, ua)) {
                 _pa.addUnitAction(a, ua);
                 lockPos(newPos.getX(), newPos.getY(), NoDirection);
                 return true;
@@ -1289,4 +1289,4 @@ public class alli extends AIWithComputationBudget {
         _pa.fillWithNones(gs, player, 1);
         return _pa;
     }
-}
+}   

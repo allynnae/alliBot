@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+build_bot/
+reports/
+wandb/
+eval/bin/
